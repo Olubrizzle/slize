@@ -1,0 +1,45 @@
+.navbar{
+  background:#008080;
+}
+
+/* .navbar{ color: #f4f4f4; cursor: pointer; } */
+/* .nav-link{ margin-right: 1em !important;} */
+/* .navbar:hover{ background: #f4f4f4; color: #008080; } */
+
+/* .navbar-collapse{ justify-content: flex-end;} */
+
+
+
+
+
+/* .overlay{
+ position: absolute;
+ min-height: 100%;
+ min-width: 100%;
+ left: 0;
+ top: 0;
+ background: rgba(244, 244, 244, 0.79);
+} */
+
+
+
+.container{
+    top: 10%;
+    margin: auto;
+    padding: 2em;
+}
+.container h1{
+  color: #008080;
+  color:#F97300 ;
+}
+/* .container p{
+ color:#666;
+ font-size: 20px;
+ width: 50%;
+ line-height: 1.5;
+} */
+/* .container button{
+ border:1px  solid #008080;
+ background:#008080;
+ color:#fff;
+} */

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+  {%  extends "text/base.html" %}
+    {% block body_block %}
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'text/textlize_style.css' %}">
+
+    <style>
+        #formid li{
+        display:inline;
+        margin-right: 3.0em;
+        box-shadow: 0px 0px 0px .5px #888;
+        border-radius: 0.6em;
+        border: 4px double #cccccc;
+       }
+       #formid li:hover {
+         color: #29f2e4;
+       }
+    </style>
+
+    <div class="container">
+      <h2>Paste text below</h2>
+      <form class="" method="POST">
+        {% csrf_token %}
+        {{ form.text_in }}
+          <div class="" id="formid">
+            {% csrf_token %}
+            {{ form.slize_size }}
+          </div>
+        <input type="submit" class="btn btn-primary btn-lg" value="Summarize Content">
+      </form>
+
+      <h2>Summarized output</h2>
+      <div class="jumbotron">
+        <textarea rows="15" cols="140" name="" style="width:100%">{{result}} </textarea>
+      </div>
+      <!-- <div class="jumbotron">
+        <p>{{ result }}</p>
+      </div> -->
+
+    </div>
+    {% endblock %}

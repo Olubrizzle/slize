@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Slizer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse">
+      <div class="navbar-header">
+        <a class="navbar-brand glyphicon glyphicon-scissors" href="{% url 'text:index' %}">LIZE</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Log In</h1>
+        <p>Enter your username and password</p>
+      </div>
+    </div>
+
+  <div class="container">
+    <form class="form-group" >
+    <!-- <form class="" action="index.html" method="post"> -->
+      <label for="username">Username</label>
+      <input type="username" class="form-control" name="username" placeholder="Username">
+      <label for="userpass">Password</label>
+      <input type="password" class="form-control" name="userpass" placeholder="Password">
+    </form>
+    <button type="submit" class="btn btn-success" name="button">Submit</button>
+
+  </div>
+<div class="container">
+  <h2>The login and sign up pages are under development, the function will allow users save data before and after slizing.</h2>
+</div>
+  </body>
+</html>
