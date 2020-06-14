@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  {%  extends "text/base.html" %}
+    {% block body_block %}
+
+    <!-- {% load static %} -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'text/convertfile_style.css' %}"> -->
+
+
+    <style>
+        #formid li{
+        display:inline;
+        margin-right: 3.0em;
+        box-shadow: 0px 0px 0px .5px #888;
+        border-radius: 0.6em;
+        border: 4px double #cccccc;
+       }
+       #formid li:hover {
+         color: #29f2e4;
+       }
+       .jumbotron p {
+           font-size: 15px;
+           font-family: serif;
+         }
+    </style>
+
+    <div class="container">
+
+      <div class="container">
+        <!-- <h2>File upload goes below (PDF, JPG, PNG) (**include delete and paste button)</h2> -->
+        <h2>File upload goes below (PDF, JPG, PNG)</h2>
+
+        <form class="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="btn btn-primary btn-lg" id="fileid" value="Upload File">
+            {{ form2.file_in }}
+          </div>
+          <input type="submit" class="btn btn-primary btn-lg" name="convertbutton" value="Convert Content">
+        </form>
+
+      <div class="jumbotron" id="fileextractid">
+        <p>{{ file_extract }}</p>
+      </div>
+    </div>
+
+
+      <form class="" method="POST">
+        <h2>Paste text below</h2>
+        {% csrf_token %}
+          <div class="">
+            {{ form1.text_in }}
+          </div>
+              <div class="" id="formid">
+                {{ form1.slize_size }}
+              </div>
+        <input type="submit" class="btn btn-primary btn-lg" name="summarizebutton" value="Summarize Content">
+      </form>
+
+      <h2>Summarized output</h2>
+
+      <div class="jumbotron">
+        <p>{{ result }}</p>
+      </div>
+
+    </div>
+    {% endblock %}
