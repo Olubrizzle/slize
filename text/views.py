@@ -22,7 +22,6 @@ from pathlib import Path
 import os
 import numpy as np
 
-import goslate
 # Create your views here.
 
 
@@ -43,8 +42,6 @@ class MediaView(TemplateView):
 class AudioView(TemplateView):
     template_name = 'text/audio.html'
 
-class VideoView(TemplateView):
-    template_name = 'text/video.html'
 # function to extract text data only from input
 def get_only_text(text_pasted):
     clean_text = bs(text_pasted, features="html.parser").get_text()
@@ -93,42 +90,6 @@ def extract_information(pdf_path):
     fake_file_handle.close()
     return (text)
 
-class TranslateLang(View):
-    template_name = 'text/translatelang.html'
-    form_1 = TextInputForm
-    def get(self, request):
-        form = self.form_1(None)
-        return render(request, self.template_name, {'form':form})
-    def post(self, request):
-        result = ''
-        form = self.form_1(None)
-        if (request.method == 'POST' and 'translatebutton' in request.POST):
-            form = TextInputForm(request.POST)
-            if form.is_valid():
-                lang_text = form.cleaned_data["text_in"]
-                gs = goslate.Goslate()
-                result = gs.translate(lang_text, 'en')
-                return render(request, self.template_name, {'form':form, 'result':result})
-        # if (request.method == 'POST' and 'summarizetbutton' in request.POST):
-        #     form = TextInputForm(request.POST)
-        #     if form.is_valid():
-                # lang_text = form.cleaned_data["text_in"]
-                # raw_text = goslate.Goslate().translate(lang_text, 'en')
-                # cleaned_text = get_only_text(result)
-                # selected = form.cleaned_data.get('slize_size')
-                # if selected:
-                #     size_dict = {"slize_pointfive":0.005, "slize_one":0.01, "slize_five":0.05,
-                #                 "slize_ten":0.10, "slize_twenty":0.20, "slize_thirty":0.30,
-                #                 "slize_forty":0.40, "slize_fifty":0.50}
-                #     for k,v in size_dict.items():
-                #         if selected == k:
-                #             result2 = summarize(cleaned_text, ratio=v)
-                #             return render(request, 'text/textlize.html', {'form':form, 'result2':result2})
-                # else:
-                #     result = summarize(cleaned_text, ratio=0.25)
-                #     return render(request, 'text/textlize.html', {'form':form, 'result2':result2})
-        else:
-            return render(request, self.template_name, {'form':form})
 
 class ConvertFile(View):
     template_name = 'text/convertfile.html'
@@ -173,30 +134,3 @@ class ConvertFile(View):
                     return render(request, self.template_name, {'form1':form1, 'form2':form2, 'result':result})
         else:
             return render(request, self.template_name, {'form1':form1, 'form2':form2})
-
-# def convertfile(request):
-#     if request.method == 'POST':
-#         form = TextInputForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             file_upload = form.cleaned_data["file_in"]
-#             file_extract = extract_information(file_upload)
-#             return render(request, 'text/convertfile.html', {'form':form, 'file_extract':file_extract})
-#     else:
-#         form = TextInputForm()
-#     return render(request, 'text/convertfile.html', {'form':form})
-
-
-
-
-# def textlize(request):
-#     result = ''
-#     form = TextInputForm(request.POST)
-#     if request.method == 'POST':
-#         if form.is_valid():
-#             raw_text = form.cleaned_data["text_in"]
-#             cleaned_text = get_only_text(raw_text)
-#             result = summarize(cleaned_text, ratio=0.2)
-#             return render(request, 'text/textlize.html', {'form':form, 'result':result})
-#     else:
-#         form = TextInputForm()
-#     return render(request, 'text/textlize.html', {'form':form})

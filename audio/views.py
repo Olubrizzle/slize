@@ -6,20 +6,13 @@ from .forms import AudioForm, TextInputForm
 import speech_recognition as sr
 
 import sys
-# sys.path.inser.t(1, '/usr/local/opt/cmu-sphinxbase/lib/pkgconfig')
-# sys.path.insert(1, '/usr/local/opt/cmu-pocketsphinx/lib/pkgconfig')
 
-# import pocketsphinx
-# import sphinxbase
+
 # Create your views here.
 
 class IndexView(TemplateView):
     template_name = 'audio/index.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['uploadaudio'] = "type anything you want displayed here"
-    #     return context
 
 
 class UploadView(View):
