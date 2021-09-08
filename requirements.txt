@@ -36,7 +36,7 @@ pdfminer.six==20181108
 pdfminer2==20151206
 pdfminer3==2018.12.3.0
 pdfminer3k==1.3.1
-Pillow==7.1.2
+Pillow==8.3.2
 pipwin==0.5.0
 pluggy==0.13.1
 ply==3.11
